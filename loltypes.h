@@ -496,6 +496,41 @@ value_cast_yarn(struct value *VALUE)
     return value;
 }
 
+struct value *value_cast_bukkit(struct value *VALUE)
+{
+	struct value *value = NULL ;
+	struct state *data = state_create(data_delete_value, data_copy_value, 1) ; 
+
+	assert (VALUE) ;
+
+	/* YARN TO BUKKIT */
+	if (VALUE->type == YARN)
+	{
+		int i = -1 ;
+		yarn t = value_get_yarn(VALUE) ;
+
+		while ( t[++i] )
+		{
+			void *key ;
+			void *dta ;
+
+			sprintf ((char *)key, "%d", i) ;
+			sprintf ((char *)dta, "%c", t[i]) ;
+
+			state_write ( data, key, dta ) ;
+		}
+	}
+	else return NULL ;
+
+	value = malloc ( sizeof ( struct value ) ) ;
+	value->type = BUKKIT ;
+	value->data = malloc ( sizeof ( struct state ) ) ;
+	*((struct state **)(value->data)) = data ;
+
+	return value ;
+}
+
+
 /* General value manipulation functions */
 
     int

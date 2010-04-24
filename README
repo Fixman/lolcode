@@ -1,21 +1,14 @@
-                  Lolcode Enterprize Editiun
+                  Lolcode Enterprise Edition
 
 Y HELO THAR!!!11
 
-This is Lolcode Enterprize editiun
-It haz bugfixits and nu stuff FOR REALZ!!
-
-Will upload new source and real changelog in some days, when I find out how this actually works.
+This is Lolcode Enterprise edition, with more bugfixes and some new
+functionality to make Lolcode the best language for your enterprise.
 
 MAINTAINER
++    Original Branch: Justin J. Meza < justin.meza@gmail.com >
++    This Branch: Martín S. Fixman < martinfixman@gmail.com >
 
--    Justin J. Meza < justin.meza@gmail.com >
-+    Original Dude: Justin J. Meza < justin.meza@gmail.com >
-+    Dude who wants to get all the fame: Martín S. Fixman < martinfixman@gmail.com >
+For changelog, see CHANGES file.
+For stuff in progress, see TODO file.
 
-Fake changelog:
-22-4: Now supports commenting with # (so #! at the beggining of an executable can make some hardcore Unix actions)
-        Can cast TROOF to YARN (not sure why you couldn't so that earlier)
-
-In progress:
-     Be able to cast YARN to BUKKIT (for analizing YARNS)
