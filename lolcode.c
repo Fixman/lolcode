@@ -106,7 +106,7 @@ parser_rules(char *BUF, size_t LEN, unsigned int *START, unsigned int *POS)
                 && (*POS > 1 && BUF[*POS - 2] != ':'))));
     }
     /* Single-line comments */
-    if (!strncmp(BUF + *POS, "BTW", 3) && !(*POS > 0 && BUF[*POS - 1] == 'O')) {
+    if ( ( !strncmp(BUF + *POS, "BTW", 3) || !strncmp(BUF + *POS, "#", 1) ) && !(*POS > 0 && BUF[*POS - 1] == 'O')) {
         *POS += 3;
         while (*POS < LEN && BUF[*POS] != '\n') *START = ++(*POS);
     }

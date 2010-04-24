@@ -418,6 +418,11 @@ value_cast_yarn(struct value *VALUE)
         *data = '\0';
     }
     /* TROOF to YARN */
+    if (VALUE->type == TROOF)
+    {
+    	if ( value_get_troof (VALUE) == WIN ) strcpy ( data, "WIN" ) ;
+    	else strcpy ( data, "FAIL" ) ;
+    }
     /* NUMBR to YARN */
     else if (VALUE->type == NUMBR) {
         numbr val = value_get_numbr(VALUE);
