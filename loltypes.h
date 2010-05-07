@@ -404,6 +404,7 @@ value_cast_numbar(struct value *VALUE)
     value->data = malloc(sizeof(numbar));
     *((numbar *)(value->data)) = data;
     return value;
+	
 }
 
     struct value *
@@ -509,13 +510,17 @@ struct value *value_cast_bukkit(struct value *VALUE)
 		int i = -1 ;
 		yarn t = value_get_yarn(VALUE) ;
 
+		printf ("Trying to copy %s\n", t) ;
+
 		while ( t[++i] )
 		{
-			void *key ;
-			void *dta ;
+			void *key = (void *)malloc(10) ; 
+			void *dta = (void *)malloc ( 2 ) ;
 
 			sprintf ((char *)key, "%d", i) ;
 			sprintf ((char *)dta, "%c", t[i]) ;
+
+			printf ("Make %s, %s\n", (char *)key, (char *)dta) ;
 
 			state_write ( data, key, dta ) ;
 		}

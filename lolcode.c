@@ -1261,7 +1261,11 @@ evaluate_expr(struct parser *PARSER, struct value *STATE, struct list *BREAKS,
         else if (parser_cmp(PARSER, "NOOB"))
             value = value_cast_noob(value);
         else if (parser_cmp(PARSER, "BUKKIT"))
+	{
             value = value_cast_bukkit(value);
+	    printf ("Hasta aca llego\n") ;
+	    fflush (stdout) ;
+	}
         else {
             error(PARSER, "Expected type");
             return NULL;
