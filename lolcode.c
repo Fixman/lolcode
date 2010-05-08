@@ -1296,6 +1296,14 @@ evaluate_expr(struct parser *PARSER, struct value *STATE, struct list *BREAKS,
         struct value *value = NULL;
         yarn line = NULL;
         size_t size = 0;
+        int word = 0 ;
+        
+        if ( !strcmp(token->data, "WORD") )
+        {
+        	word = 1 ;
+        	token = parser_get( PARSER ) ;
+        }
+
         if (!token || !(value =
                     state_read(value_get_bukkit(STATE), token->data))) {
             error(PARSER, "Invalid assignment target");
@@ -1308,7 +1316,14 @@ evaluate_expr(struct parser *PARSER, struct value *STATE, struct list *BREAKS,
          *     token_delete(token);
          *     return NULL;
          * } */
-        get_line(&line, &size, stdin);
+         
+        if ( !word ) get_line(&line, &size, stdin);
+        else
+        {
+        	line = malloc( 128 ) ;
+        	scanf ("%s%n", line, &size) ;
+        }
+        
         /* TODO: Do we want to save the trailing newline? */
         if (line[strlen(line) - 1] == '\n') {
             if (line[strlen(line) - 1] == '\r') {
