@@ -157,6 +157,16 @@ func_modof(struct value *LEFT, struct value *RIGHT)
 }
 
     struct value *
+func_shiftr(struct value *LEFT, struct value *RIGHT)
+{
+    assert(LEFT);
+    assert(RIGHT);
+    if (LEFT->type != NUMBR) return NULL;
+    if (RIGHT->type != NUMBR) return NULL;
+    return value_create_numbr(value_get_numbr(LEFT) << value_get_numbr(RIGHT));
+}
+
+    struct value *
 func_biggrof(struct value *LEFT, struct value *RIGHT)
 {
     assert(LEFT);

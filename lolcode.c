@@ -788,6 +788,28 @@ evaluate_expr(struct parser *PARSER, struct value *STATE, struct list *BREAKS,
         }
         return func_foldl(values, func_modof);
     }
+    
+    if (parser_cmp(PARSER, "SHIFTR")) {
+        struct list *args = NULL;
+        struct list *values = NULL;
+        int types[1] = { NUMBR };
+        if (!parser_cmp(PARSER, "BY")) {
+            error(PARSER, "Expected `BY' after `SHIFTR'");
+            return NULL;
+        }
+        args = args_get(PARSER, STATE, BREAKS, ACCESS, 2);
+        if (list_size(args) != 2) {
+            error(PARSER, "Wrong number of arguments to SHIFTR BY") ;
+            list_delete(args);
+            return NULL;
+        }
+        values = args_convert(args, types, 1);
+        if (!values) {
+            error(PARSER, "Invalid argument to SHIFTR BY");
+            return NULL;
+        }
+        return func_foldl(values, func_shiftr);
+    }
 
     /* BIGGR OF */
     if (parser_cmp(PARSER, "BIGGR")) {
